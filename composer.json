@@ -11,6 +11,9 @@
   "autoload": {
     "psr-4": {
       "Chumoe\\Napcat\\": "./src"
-    }
+    },
+    "files": [
+      "./src/support/helpers.php"
+    ]
   }
 }
