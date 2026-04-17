@@ -34,6 +34,15 @@ class Napcat
     }
 
     /**
+     * 检查napcat运行状态
+     * @return bool 返回napcat的运行状态，true表示正在运行，false表示未运行
+     */
+    public function status(): bool
+    {
+        return Cache::get('napcat.run', false);
+    }
+
+    /**
      * 处理消息数据，如果echo长度超过16则缓存
      * @param array $data 包含消息数据的数组
      */
@@ -47,10 +56,11 @@ class Napcat
      * @param string $action 执行的操作名称
      * @param array $params 操作所需的参数数组
      * @param bool $wait 是否等待操作结果
-     * @return mixed 返回操作结果，如果不需要等待则返回null
+     * @return mixed 返回操作结果，如果不需要等待则返回null，如果Napcat不在线直接返回false
      */
     private function base(string $action, array $params = [], bool $wait = false): mixed
     {
+        if (!$this->status()) return false;
         // 创建一个唯一的会话ID作为标识
         $echo = session_create_id();
         // 将操作、参数和标识编码为JSON并加入队列

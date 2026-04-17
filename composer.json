@@ -6,7 +6,8 @@
   "require": {
     "php": ">=8.1",
     "webman/cache": "^2.1",
-    "webman/event": "^1.0"
+    "webman/event": "^1.0",
+    "workerman/webman-framework": "^2.2"
   },
   "autoload": {
     "psr-4": {
