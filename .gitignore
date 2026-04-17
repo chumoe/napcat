@@ -9,3 +9,5 @@
 .htaccess
 composer.lock
 /proxy_cache_dir
+/vendor
+/.github
