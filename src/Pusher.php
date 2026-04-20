@@ -23,6 +23,7 @@ class Pusher
                 }
             }, ['queue' => Queue::getInstance('napcat')]);
             Cache::set('napcat.run', true);
+            echo "Napcat Connected.\r\n";
         } else {
             Log::error("Napcat Unauthorized access.\r\n");
             $connection->close();
@@ -61,5 +62,6 @@ class Pusher
     {
         Timer::del($this->timer_id);
         Cache::set('napcat.run', false);
+        echo "Napcat connection closed.\r\n";
     }
 }
