@@ -21,7 +21,7 @@ class Pusher
                 if (!$queue->isEmpty()) {
                     $connection->send($queue->dequeue());
                 }
-            }, ['queue' => Queue::getInstance('napcat')]);
+            }, ['queue' => Queue::getInstance('napcat.messages')]);
             Cache::set('napcat.run', true);
             echo "Napcat Connected.\r\n";
         } else {
